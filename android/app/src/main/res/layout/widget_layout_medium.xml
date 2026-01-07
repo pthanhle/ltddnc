@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
+            <TextView android:id="@+id/widget_city_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HCM" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" />
+            <TextView android:id="@+id/widget_temp_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="48sp" android:fontFamily="sans-serif-light" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="end">
+            <TextView android:id="@+id/widget_icon_emoji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="24sp" android:layout_marginBottom="4dp"/>
+            <TextView android:id="@+id/widget_desc_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Có mây" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:id="@+id/widget_hl_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C:30 T:23" android:textColor="#B0B0B0" android:textSize="14sp" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0h" android:textColor="#B0B0B0" android:textSize="12sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="20sp" android:layout_marginVertical="6dp"/>
+            <TextView android:id="@+id/hourly_temp_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1h" android:textColor="#B0B0B0" android:textSize="12sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="20sp" android:layout_marginVertical="6dp"/>
+            <TextView android:id="@+id/hourly_temp_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2h" android:textColor="#B0B0B0" android:textSize="12sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="20sp" android:layout_marginVertical="6dp"/>
+            <TextView android:id="@+id/hourly_temp_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3h" android:textColor="#B0B0B0" android:textSize="12sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="20sp" android:layout_marginVertical="6dp"/>
+            <TextView android:id="@+id/hourly_temp_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4h" android:textColor="#B0B0B0" android:textSize="12sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="20sp" android:layout_marginVertical="6dp"/>
+            <TextView android:id="@+id/hourly_temp_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5h" android:textColor="#B0B0B0" android:textSize="12sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="20sp" android:layout_marginVertical="6dp"/>
+            <TextView android:id="@+id/hourly_temp_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

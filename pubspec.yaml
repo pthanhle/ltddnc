@@ -49,6 +49,7 @@ dependencies:
   rxdart: ^0.28.0
   flutter_map: ^8.2.2
   latlong2: ^0.9.1
+  home_widget: ^0.8.1
 
 dev_dependencies:
   flutter_test:

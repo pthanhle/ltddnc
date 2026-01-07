@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/widget_city_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thủ Đức 📍"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/widget_temp_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="29°"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/widget_icon_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☁️"
+            android:textSize="22sp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/widget_desc_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Có mây"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/widget_hl_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C:29° T:22°"
+            android:textColor="#B0B0B0"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

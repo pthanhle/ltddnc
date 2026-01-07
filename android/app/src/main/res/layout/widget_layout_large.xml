@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:weightSum="10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.8"
+        android:layout_marginBottom="8dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
+            <TextView android:id="@+id/widget_city_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HCM 📍" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" />
+            <TextView android:id="@+id/widget_temp_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23°" android:textColor="#FFFFFF" android:textSize="42sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="end">
+            <TextView android:id="@+id/widget_icon_emoji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="22sp" android:layout_marginBottom="4dp"/>
+            <TextView android:id="@+id/widget_desc_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Có mây" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:id="@+id/widget_hl_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C:30 T:23" android:textColor="#B0B0B0" android:textSize="13sp" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView android:layout_width="match_parent" android:layout_height="1dp" android:src="@android:color/darker_gray" android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.2"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--h" android:textColor="#B0B0B0" android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="16sp" android:layout_marginVertical="2dp"/>
+            <TextView android:id="@+id/hourly_temp_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--°" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--h" android:textColor="#B0B0B0" android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="16sp" android:layout_marginVertical="2dp"/>
+            <TextView android:id="@+id/hourly_temp_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--°" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--h" android:textColor="#B0B0B0" android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="16sp" android:layout_marginVertical="2dp"/>
+            <TextView android:id="@+id/hourly_temp_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--°" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--h" android:textColor="#B0B0B0" android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="16sp" android:layout_marginVertical="2dp"/>
+            <TextView android:id="@+id/hourly_temp_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--°" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--h" android:textColor="#B0B0B0" android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="16sp" android:layout_marginVertical="2dp"/>
+            <TextView android:id="@+id/hourly_temp_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--°" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/hourly_time_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--h" android:textColor="#B0B0B0" android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hourly_emoji_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☁️" android:textSize="16sp" android:layout_marginVertical="2dp"/>
+            <TextView android:id="@+id/hourly_temp_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--°" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView android:layout_width="match_parent" android:layout_height="1dp" android:src="@android:color/darker_gray" android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/daily_day_0" android:layout_width="0dp" android:layout_weight="1.5" android:layout_height="wrap_content" android:text="Hôm nay" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/daily_icon_0" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="☀️" android:textSize="16sp"/>
+            <TextView android:id="@+id/daily_min_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°" android:textColor="#B0B0B0" android:textSize="14sp" android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:id="@+id/daily_bar_0"
+                android:layout_width="0dp"
+                android:layout_weight="2.5"
+                android:layout_height="6dp"
+                android:scaleType="fitXY"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView android:id="@+id/daily_max_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°" android:textColor="#FFFFFF" android:textSize="14sp" android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/daily_day_1" android:layout_width="0dp" android:layout_weight="1.5" android:layout_height="wrap_content" android:text="Thứ 2" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/daily_icon_1" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="☀️" android:textSize="16sp"/>
+            <TextView android:id="@+id/daily_min_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°" android:textColor="#B0B0B0" android:textSize="14sp" android:layout_marginEnd="8dp"/>
+            <ImageView android:id="@+id/daily_bar_1" android:layout_width="0dp" android:layout_weight="2.5" android:layout_height="6dp" android:scaleType="fitXY" android:layout_marginHorizontal="4dp"/>
+            <TextView android:id="@+id/daily_max_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°" android:textColor="#FFFFFF" android:textSize="14sp" android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/daily_day_2" android:layout_width="0dp" android:layout_weight="1.5" android:layout_height="wrap_content" android:text="Thứ 3" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/daily_icon_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="☀️" android:textSize="16sp"/>
+            <TextView android:id="@+id/daily_min_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°" android:textColor="#B0B0B0" android:textSize="14sp" android:layout_marginEnd="8dp"/>
+            <ImageView android:id="@+id/daily_bar_2" android:layout_width="0dp" android:layout_weight="2.5" android:layout_height="6dp" android:scaleType="fitXY" android:layout_marginHorizontal="4dp"/>
+            <TextView android:id="@+id/daily_max_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°" android:textColor="#FFFFFF" android:textSize="14sp" android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/daily_day_3" android:layout_width="0dp" android:layout_weight="1.5" android:layout_height="wrap_content" android:text="Thứ 4" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/daily_icon_3" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="☀️" android:textSize="16sp"/>
+            <TextView android:id="@+id/daily_min_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°" android:textColor="#B0B0B0" android:textSize="14sp" android:layout_marginEnd="8dp"/>
+            <ImageView android:id="@+id/daily_bar_3" android:layout_width="0dp" android:layout_weight="2.5" android:layout_height="6dp" android:scaleType="fitXY" android:layout_marginHorizontal="4dp"/>
+            <TextView android:id="@+id/daily_max_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°" android:textColor="#FFFFFF" android:textSize="14sp" android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/daily_day_4" android:layout_width="0dp" android:layout_weight="1.5" android:layout_height="wrap_content" android:text="Thứ 5" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/daily_icon_4" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="☀️" android:textSize="16sp"/>
+            <TextView android:id="@+id/daily_min_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°" android:textColor="#B0B0B0" android:textSize="14sp" android:layout_marginEnd="8dp"/>
+            <ImageView android:id="@+id/daily_bar_4" android:layout_width="0dp" android:layout_weight="2.5" android:layout_height="6dp" android:scaleType="fitXY" android:layout_marginHorizontal="4dp"/>
+            <TextView android:id="@+id/daily_max_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°" android:textColor="#FFFFFF" android:textSize="14sp" android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
