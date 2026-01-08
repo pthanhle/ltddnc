@@ -511,6 +511,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             PrecipitationMapCard(
                               latitude: locData.city.latitude,
                               longitude: locData.city.longitude,
+                              currentTemp: data.current.temperature2m.round(),
+                              cityName: locData.city.name,
                             ),
 
                             const SizedBox(height: 20),

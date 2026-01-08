@@ -89,7 +89,8 @@ class _WeatherEffectLayerState extends State<WeatherEffectLayer> with SingleTick
     // Overcast (3)
     else if (code == 3) {
        cloudCount = 20; // Full coverage, dense
-       cloudOpacityBase = 0.95;
+       cloudOpacityBase = 0.85; // Slight transparency for contrast
+       darkClouds = true; // Use grey clouds
     }
     // Fog (45, 48)
     else if (code == 45 || code == 48) {
@@ -407,7 +408,7 @@ class RealisticCloudPainter extends CustomPainter {
        final paint = Paint()
          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 45); 
 
-       Color cColor = cloud.isDark ? const Color(0xFFB0BCC9) : Colors.white;
+       Color cColor = cloud.isDark ? const Color(0xFF90A4AE) : Colors.white;
        paint.color = cColor.withOpacity(cloud.density);
        
        double cx = cloud.x * size.width;
