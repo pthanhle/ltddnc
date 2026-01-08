@@ -11,14 +11,15 @@ class WeatherService {
       Position position = await _determinePosition();
       final url = Uri.parse(
           '$baseUrl?latitude=${position.latitude}&longitude=${position.longitude}&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto');
-      
+
       final response = await http.get(url);
 
+      // THÔNG BÁO TỰ ĐỘNG (NOTIFICATION)
       if (response.statusCode == 200) {
         return WeatherData.fromJson(jsonDecode(response.body));
       } else {
         print("Failed to load weather data: ${response.statusCode}");
-        return null; // Or throw exception
+        return null;
       }
     } catch (e, stackTrace) {
       print("Error fetching weather: $e");

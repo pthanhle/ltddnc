@@ -4,10 +4,14 @@ import 'package:flutter_1/logic/providers/weather_provider.dart';
 import 'package:flutter_1/ui/screens/home_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_1/ui/screens/notification_service.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('vi');
+
+  await NotificationService().init();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,

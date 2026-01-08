@@ -9,12 +9,15 @@
 *   Tự động phát hiện vị trí người dùng.
 *   Tìm kiếm thời tiết theo thành phố.
 *   Giao diện người dùng đẹp mắt và hiện đại.
+*   Widget màn hình chính để xem nhanh thông tin thời tiết.
+*   Cung cấp lời khuyên dựa trên điều kiện thời tiết.
 
 ## Thư viện sử dụng
 
 *   **Provider:** Quản lý trạng thái.
 *   **HTTP:** Gọi API thời tiết.
 *   **Geolocator:** Lấy vị trí hiện tại của người dùng.
+*   **home_widget:** Hỗ trợ tạo và cập nhật widget trên màn hình chính.
 *   **Flutter Map:** Hiển thị bản đồ.
 *   **FL Chart:** Hiển thị biểu đồ thời tiết.
 *   **Lottie:** Thêm các hiệu ứng animation đẹp mắt.

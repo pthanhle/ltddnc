@@ -21,7 +21,6 @@ public class WeatherWidgetMedium extends AppWidgetProvider {
             views.setTextViewText(R.id.widget_hl_text, widgetData.getString("high_low", ""));
 
             for (int i = 0; i < 6; i++) {
-                // Lấy data từ file Dart gửi qua
                 String time = widgetData.getString("hourly_time_" + i, "--");
                 String temp = widgetData.getString("hourly_temp_" + i, "--");
                 String emoji = widgetData.getString("hourly_emoji_" + i, "");

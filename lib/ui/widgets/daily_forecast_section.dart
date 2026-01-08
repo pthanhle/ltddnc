@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// Đảm bảo import đúng đường dẫn model của bạn
 import 'package:flutter_1/data/models/weather_model.dart';
 import 'package:flutter_1/utils/weather_utils.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +16,6 @@ class DailyForecastSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1. LỌC NGÀY (Logic cũ của bạn)
     List<int> validIndices = [];
     DateTime now = DateTime.now();
     DateTime today = DateTime(now.year, now.month, now.day);
@@ -29,7 +27,6 @@ class DailyForecastSection extends StatelessWidget {
       }
     }
 
-    // 2. TÌM MIN/MAX TOÀN CỤC (Logic cũ của bạn)
     double globalMin = 100;
     double globalMax = -100;
     for (var i in validIndices) {
@@ -39,10 +36,8 @@ class DailyForecastSection extends StatelessWidget {
       if (high > globalMax) globalMax = high;
     }
 
-    // 3. GIAO DIỆN
     return Container(
       padding: const EdgeInsets.all(16),
-      // Thay GlassContainer bằng Container có màu mờ để tránh lỗi thiếu file
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.2),
         borderRadius: BorderRadius.circular(15),
@@ -82,9 +77,7 @@ class DailyForecastSection extends StatelessWidget {
               if (_isToday(dt)) {
                 dayName = "Hôm nay";
               } else {
-                // Format tiếng Việt: Th 2, Th 3...
                 dayName = DateFormat('E', 'vi').format(dt);
-                // Fix lỗi font chữ nếu thư viện trả về tiếng Anh
                 if (dayName == 'Mon') dayName = 'Th 2';
                 else if (dayName == 'Tue') dayName = 'Th 3';
                 else if (dayName == 'Wed') dayName = 'Th 4';
@@ -96,10 +89,8 @@ class DailyForecastSection extends StatelessWidget {
 
               final min = weather.daily.temperature2mMin[dataIndex].round();
               final max = weather.daily.temperature2mMax[dataIndex].round();
-              // Lưu ý: Kiểm tra file model, thường là weathercode (chữ thường)
               final code = weather.daily.weatherCode[dataIndex];
 
-              // Tính toán thanh nhiệt độ
               double range = globalMax - globalMin;
               if (range == 0) range = 1;
               double startPct = (weather.daily.temperature2mMin[dataIndex] - globalMin) / range;
@@ -109,17 +100,15 @@ class DailyForecastSection extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Row(
                   children: [
-                    // Cột 1: Thứ
                     Expanded(
-                      flex: 3, // Giảm flex xuống chút cho cân đối
+                      flex: 3,
                       child: Text(dayName,
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 16, // Font 18 hơi to, để 16 đẹp hơn
+                              fontSize: 16,
                               fontWeight: FontWeight.w500)),
                     ),
 
-                    // Cột 2: Icon
                     Expanded(
                       flex: 3,
                       child: Row(
@@ -130,7 +119,6 @@ class DailyForecastSection extends StatelessWidget {
                       ),
                     ),
 
-                    // Cột 3: Thanh nhiệt độ (PHẦN ĐÃ SỬA LỖI)
                     Expanded(
                       flex: 8,
                       child: Row(
@@ -140,29 +128,24 @@ class DailyForecastSection extends StatelessWidget {
                             child: Text("$min°",
                                 style: TextStyle(
                                     color: Colors.white.withOpacity(0.6),
-                                    fontSize: 16)), // Font 16
+                                    fontSize: 16)),
                           ),
                           const SizedBox(width: 5),
 
-                          // --- ĐOẠN CODE SỬA LỖI ---
-                          // Đưa LayoutBuilder ra ngoài cùng để lấy kích thước
                           Expanded(
                             child: SizedBox(
                               height: 4,
                               child: LayoutBuilder(
                                 builder: (context, constraints) {
                                   double w = constraints.maxWidth;
-                                  // Stack phải nằm TRONG LayoutBuilder
                                   return Stack(
                                     children: [
-                                      // Nền xám
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white12,
                                           borderRadius: BorderRadius.circular(2),
                                         ),
                                       ),
-                                      // Thanh màu (Positioned nằm trực tiếp trong Stack -> OK)
                                       Positioned(
                                           left: w * startPct,
                                           width: (w * lengthPct) < 1 ? 1 : (w * lengthPct),
@@ -182,7 +165,6 @@ class DailyForecastSection extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // -------------------------
 
                           const SizedBox(width: 5),
                           SizedBox(
