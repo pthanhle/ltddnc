@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.RemoteViews;
-// Import thư viện đồ họa để vẽ
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,7 +12,8 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
-
+import android.app.PendingIntent;
+import android.content.Intent;
 public class WeatherWidgetLarge extends AppWidgetProvider {
     private Bitmap createRangeBar(float minTemp, float maxTemp) {
         int width = 300;
@@ -57,6 +57,11 @@ public class WeatherWidgetLarge extends AppWidgetProvider {
 
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout_large);
+
+            // Điều hướng vào app khi click vào
+            Intent intent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            views.setOnClickPendingIntent(R.id.widget_root, pendingIntent);
 
             views.setTextViewText(R.id.widget_city_text, widgetData.getString("city_name", "HCM") + " 📍");
             views.setTextViewText(R.id.widget_temp_text, widgetData.getString("temperature", "--") + "°");
