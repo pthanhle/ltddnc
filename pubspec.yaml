@@ -52,6 +52,7 @@ dependencies:
   home_widget: ^0.8.1
   flutter_local_notifications: ^17.0.0
   shared_preferences: ^2.5.4
+  connectivity_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:

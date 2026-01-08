@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/data/models/weather_model.dart';
 import 'package:flutter_1/utils/weather_utils.dart';
+import 'package:flutter_1/ui/widgets/details/daily_detail_modal.dart';
 import 'package:intl/intl.dart';
 
 class DailyForecastSection extends StatelessWidget {
@@ -96,89 +97,102 @@ class DailyForecastSection extends StatelessWidget {
               double startPct = (weather.daily.temperature2mMin[dataIndex] - globalMin) / range;
               double lengthPct = (weather.daily.temperature2mMax[dataIndex] - weather.daily.temperature2mMin[dataIndex]) / range;
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Text(dayName,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500)),
+              return InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => DailyDetailModal(
+                      weather: weather,
+                      initialIndex: dataIndex,
                     ),
-
-                    Expanded(
-                      flex: 3,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(WeatherUtils.getWeatherIcon(code), color: Colors.white, size: 24),
-                          ]
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Text(dayName,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500)),
                       ),
-                    ),
-
-                    Expanded(
-                      flex: 8,
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 35,
-                            child: Text("$min°",
-                                style: TextStyle(
-                                    color: Colors.white.withOpacity(0.6),
-                                    fontSize: 16)),
-                          ),
-                          const SizedBox(width: 5),
-
-                          Expanded(
-                            child: SizedBox(
-                              height: 4,
-                              child: LayoutBuilder(
-                                builder: (context, constraints) {
-                                  double w = constraints.maxWidth;
-                                  return Stack(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white12,
-                                          borderRadius: BorderRadius.circular(2),
+  
+                      Expanded(
+                        flex: 3,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(WeatherUtils.getWeatherIcon(code), color: Colors.white, size: 24),
+                            ]
+                        ),
+                      ),
+  
+                      Expanded(
+                        flex: 8,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 35,
+                              child: Text("$min°",
+                                  style: TextStyle(
+                                      color: Colors.white.withOpacity(0.6),
+                                      fontSize: 16)),
+                            ),
+                            const SizedBox(width: 5),
+  
+                            Expanded(
+                              child: SizedBox(
+                                height: 4,
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    double w = constraints.maxWidth;
+                                    return Stack(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white12,
+                                            borderRadius: BorderRadius.circular(2),
+                                          ),
                                         ),
-                                      ),
-                                      Positioned(
-                                          left: w * startPct,
-                                          width: (w * lengthPct) < 1 ? 1 : (w * lengthPct),
-                                          top: 0,
-                                          bottom: 0,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              gradient: const LinearGradient(
-                                                  colors: [Colors.greenAccent, Colors.orangeAccent]),
-                                              borderRadius: BorderRadius.circular(2),
-                                            ),
-                                          )
-                                      ),
-                                    ],
-                                  );
-                                },
+                                        Positioned(
+                                            left: w * startPct,
+                                            width: (w * lengthPct) < 1 ? 1 : (w * lengthPct),
+                                            top: 0,
+                                            bottom: 0,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                gradient: const LinearGradient(
+                                                    colors: [Colors.greenAccent, Colors.orangeAccent]),
+                                                borderRadius: BorderRadius.circular(2),
+                                              ),
+                                            )
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
                               ),
                             ),
-                          ),
-
-                          const SizedBox(width: 5),
-                          SizedBox(
-                            width: 35,
-                            child: Text("$max°",
-                                textAlign: TextAlign.end,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16)),
-                          ),
-                        ],
+  
+                            const SizedBox(width: 5),
+                            SizedBox(
+                              width: 35,
+                              child: Text("$max°",
+                                  textAlign: TextAlign.end,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16)),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },

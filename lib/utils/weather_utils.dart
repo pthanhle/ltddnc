@@ -5,36 +5,36 @@ class WeatherUtils {
   static String getWeatherDescription(int code) {
     switch (code) {
       case 0:
-        return 'Clear Sky';
+        return 'Quang đãng';
       case 1:
       case 2:
       case 3:
-        return 'Partly Cloudy';
+        return 'Có mây vài nơi';
       case 45:
       case 48:
-        return 'Foggy';
+        return 'Sương mù';
       case 51:
       case 53:
       case 55:
-        return 'Drizzle';
+        return 'Mưa phùn';
       case 61:
       case 63:
       case 65:
-        return 'Rain';
+        return 'Mưa';
       case 71:
       case 73:
       case 75:
-        return 'Snow';
+        return 'Tuyết';
       case 80:
       case 81:
       case 82:
-        return 'Heavy Rain';
+        return 'Mưa to';
       case 95:
       case 96:
       case 99:
-        return 'Thunderstorm';
+        return 'Dông';
       default:
-        return 'Unknown';
+        return 'Không rõ';
     }
   }
 

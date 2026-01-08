@@ -15,6 +15,8 @@ import 'package:flutter_1/utils/weather_utils.dart';
 import 'package:flutter_1/utils/weather_advice.dart';
 import 'package:home_widget/home_widget.dart';
 import 'package:flutter_1/ui/screens/notification_service.dart';
+import 'package:flutter_1/screens/city_list_screen.dart';
+import 'package:flutter_1/ui/widgets/weather_effects/weather_effect_layer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -250,20 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
 
-      // Demo push noti
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          NotificationService().showNotification(
-            title: "Test Demo Notification",
 
-            body: "Đây là thông báo demo!",
-          );
-        },
-
-        backgroundColor: Colors.white,
-
-        child: const Icon(Icons.notifications_active, color: Colors.blue),
-      ),
 
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -272,10 +261,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
         systemOverlayStyle: SystemUiOverlayStyle.light,
 
-        leading: IconButton(
-          onPressed: () {},
-
-          icon: const Icon(CupertinoIcons.list_bullet, color: Colors.white),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const CityListScreen()));
+              },
+              icon: const Icon(CupertinoIcons.list_bullet, color: Colors.white, size: 20),
+            ),
+          ),
         ),
 
         actions: [
@@ -302,17 +301,25 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }
 
+          // Sync PageController if provider index changes externally (e.g. from CityListScreen)
+          if (_pageController.hasClients && _pageController.page?.round() != provider.currentIndex) {
+             WidgetsBinding.instance.addPostFrameCallback((_) async {
+                // Small delay to ensure PageView has updated its viewport/itemCount
+                await Future.delayed(const Duration(milliseconds: 100));
+                if (_pageController.hasClients) {
+                  _pageController.jumpToPage(provider.currentIndex);
+                }
+             });
+          }
+
           return Stack(
             children: [
               PageView.builder(
                 controller: _pageController,
-
                 itemCount: provider.locations.length,
-
                 onPageChanged: (index) {
                   provider.setCurrentIndex(index);
                 },
-
                 itemBuilder: (context, index) {
                   final locData = provider.locations[index];
 
@@ -327,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
 
-                  if (locData.error.isNotEmpty) {
+                  if (locData.error.isNotEmpty && locData.data == null) {
                     return _buildBackground(
                       child: Center(
                         child: Text(
@@ -370,6 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               weather: data,
                               city: locData.city,
                               isMyLocation: index == 0,
+                              hasConnectionError: locData.error.isNotEmpty,
                             ),
 
                             const SizedBox(height: 20),
@@ -582,12 +590,25 @@ class _HomeScreenState extends State<HomeScreen> {
       gradient = AppTheme.sunnyGradient;
     }
 
-    return Container(
-      decoration: BoxDecoration(gradient: gradient),
+    return Stack(
+      children: [
+        // 1. Base Gradient
+        Container(
+          decoration: BoxDecoration(gradient: gradient),
+          constraints: const BoxConstraints.expand(),
+        ),
 
-      constraints: const BoxConstraints.expand(),
+        // 2. Weather Effects (Rain, Sun, etc.)
+        Positioned.fill(
+          child: WeatherEffectLayer(
+            weatherCode: code,
+            isDay: isDay,
+          ),
+        ),
 
-      child: SafeArea(child: child),
+        // 3. Content
+        SafeArea(child: child),
+      ],
     );
   }
 }

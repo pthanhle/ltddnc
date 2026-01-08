@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_1/data/models/weather_model.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WeatherService {
   static const String baseUrl = "https://api.open-meteo.com/v1/forecast";
@@ -10,6 +11,9 @@ class WeatherService {
   static const String geocodingUrl = "https://geocoding-api.open-meteo.com/v1/search";
 
   Future<WeatherData?> fetchWeather(double lat, double lon) async {
+    final cacheKey = "weather_cache_${lat.toStringAsFixed(4)}_${lon.toStringAsFixed(4)}";
+    final prefs = await SharedPreferences.getInstance();
+
     try {
       final weatherUrl = Uri.parse(
           '$baseUrl?latitude=$lat&longitude=$lon&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m,surface_pressure,visibility,wind_direction_10m,cloud_cover,wind_gusts_10m,uv_index&hourly=temperature_2m,weather_code,precipitation_probability,uv_index,wind_speed_10m,relative_humidity_2m,visibility,surface_pressure,apparent_temperature,precipitation,cloud_cover,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max,precipitation_sum,daylight_duration&timezone=auto&forecast_days=10&past_days=1');
@@ -18,24 +22,37 @@ class WeatherService {
       
       // Fetch Air Quality separately
       final aqUrl = Uri.parse('$airQualityUrl?latitude=$lat&longitude=$lon&current=us_aqi,pm10,pm2_5&hourly=us_aqi');
-      final aqResponse = await http.get(aqUrl);
+      http.Response? aqResponse;
+      try {
+        aqResponse = await http.get(aqUrl);
+      } catch (e) {
+          print("AQI fetch failed: $e");
+      }
 
       if (weatherResponse.statusCode == 200) {
         final weatherJson = jsonDecode(weatherResponse.body);
         
-        if (aqResponse.statusCode == 200) {
+        if (aqResponse != null && aqResponse.statusCode == 200) {
            final aqJson = jsonDecode(aqResponse.body);
            weatherJson['air_quality'] = aqJson;
         }
+
+        // Add Timestamp and Cache
+        weatherJson['local_last_updated'] = DateTime.now().toIso8601String();
+        await prefs.setString(cacheKey, jsonEncode(weatherJson));
         
         return WeatherData.fromJson(weatherJson);
       } else {
         print("Failed to load weather data: ${weatherResponse.statusCode}");
-        return null;
+        throw Exception("Server error");
       }
-    } catch (e, stackTrace) {
-      print("Error fetching weather: $e");
-      print(stackTrace);
+    } catch (e) {
+      print("Error fetching weather: $e. Using cache.");
+      // Fallback to cache
+      final cachedString = prefs.getString(cacheKey);
+      if (cachedString != null) {
+          return WeatherData.fromJson(jsonDecode(cachedString));
+      }
       return null;
     }
   }

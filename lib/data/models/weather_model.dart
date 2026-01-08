@@ -6,6 +6,7 @@ class WeatherData {
   final HourlyWeather hourly;
   final DailyWeather daily;
   final AirQuality? airQuality;
+  final DateTime? lastUpdated;
 
   WeatherData({
     required this.latitude,
@@ -14,6 +15,7 @@ class WeatherData {
     required this.hourly,
     required this.daily,
     this.airQuality,
+    this.lastUpdated,
   });
 
   factory WeatherData.fromJson(Map<String, dynamic> json) {
@@ -24,6 +26,7 @@ class WeatherData {
       hourly: HourlyWeather.fromJson(json['hourly'] ?? {}),
       daily: DailyWeather.fromJson(json['daily'] ?? {}),
       airQuality: json.containsKey('air_quality') && json['air_quality'] != null ? AirQuality.fromJson(json['air_quality']) : null,
+      lastUpdated: json['local_last_updated'] != null ? DateTime.parse(json['local_last_updated']) : null,
     );
   }
 }

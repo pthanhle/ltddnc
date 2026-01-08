@@ -198,7 +198,7 @@ class DetailChart extends StatelessWidget {
                getTitlesWidget: (value, meta) {
                  return Padding(
                    padding: const EdgeInsets.only(top: 8.0),
-                   child: Text("${value.toInt()}h", style: const TextStyle(color: Colors.white54, fontSize: 10)),
+                   child: Text("${value.toInt()} giờ", style: const TextStyle(color: Colors.white54, fontSize: 10)),
                  );
                },
              )
